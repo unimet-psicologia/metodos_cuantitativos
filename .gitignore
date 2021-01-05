@@ -3,3 +3,6 @@
 .RData
 .Ruserdata
 datasets/archivos_guardados/*.csv
+datasets/archivos_guardados/*.xlsx
+datasets/archivos_guardados/*.xls
+datasets/archivos_guardados/*.sav
