@@ -1,0 +1,28 @@
+readme.txt
+
+This dataset was collected as part of a project evaluating the effect of a number of predictors on the likelihood of individuals onward-sharing of disinformation on social media platforms. Four experimental studies were performed, with characteristics of the messages being manipulated and characteristics of the individuals being measured. The psychometric measures used were the New Media Literacy Scale (Koc & Barut, 2016), the Social and Economic Conservatism Scale (Everett, 2013), and a Five-Factor personality questionnaire (Buchanan, Johnson, & Goldberg, 2005) derived from the International Personality Item Pool (IPIP; Goldberg, 1999) that provides indices of Extraversion, Neuroticism, Openness to Experience, Agreeableness and Conscientiousness. The methodology of each study is described in the Technical report.
+
+
+This deposit contains the following files:
+
+Technical Report.pdf - Technical report describing data collection for all four studies.
+
+Study 1.zip which contains: 
+
+Social Media Disinformation Study 1 archive dataset.sav - datafile in SPSS formatSocial Media Disinformation Study 1 consent form.pdf - consent formSocial Media Disinformation Study 1 data dictionary.xlsx - data dictionary in Excel spreadsheetSocial Media Disinformation Study 1 Questionnaire (includes all variations of experimental conditions).pdf - questionnaire seen by participants
+
+Study 2.zip which contains:
+
+Social Media Disinformation Study 2 archive dataset.sav datafile in SPSS formatSocial Media Disinformation Study 2 consent form.pdf - consent formSocial Media Disinformation Study 2 data dictionary.xlsx  - data dictionary in Excel spreadsheet
+Social Media Disinformation Study 2 Questionnaire (includes all variations of experimental conditions).pdf - questionnaire seen by participants
+
+Study 3.zip which contains:
+
+Social Media Disinformation Study 3 archive dataset.sav - datafile in SPSS formatSocial Media Disinformation Study 3 consent form.pdf - consent formSocial Media Disinformation Study 3 data dictionary.xlsx - data dictionary in Excel spreadsheetSocial Media Disinformation Study 3 Questionnaire (includes all variations of experimental conditions).pdf - questionnaire seen by participants
+
+Study 4.zip which contains:
+Social Media Disinformation Study 4 archive dataset.sav - datafile in SPSS formatSocial Media Disinformation Study 4 consent form.pdf - consent formSocial Media Disinformation Study 4 data dictionary.xlsx  - data dictionary in Excel spreadsheetSocial Media Disinformation Study 4 Questionnaire (includes all variations of experimental conditions).pdf - questionnaire seen by participants
+
+The questionnaire documents are very long because they include all variations of the experimental stimuli. In practice, participants were randomised to see just one set of stimuli, as described in the technical report. Data dictionaries were prepared according to Open Science Foundation guidance https://help.osf.io/hc/en-us/articles/360019739054-How-to-Make-a-Data-Dictionary. Datafiles are in SPSS .sav format prepared using SPSS Version 25 for Mac.
+
+
