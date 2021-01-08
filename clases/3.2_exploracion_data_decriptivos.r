@@ -59,7 +59,6 @@ study_1_original_df %>% colnames()
 colnames(study_1_original_df) <- study_1_original_df %>%
   colnames() %>% # Seleccionamos el nombre de Todas columnas
   tolower() %>% # Lo convertimos a lower case
-
   str_replace(" ", "_") # Reemplazamos espacios con underscores
 
 colnames(study_1_original_df)
@@ -179,4 +178,22 @@ study_1_subset_df %>%
   summarise(frecuencia = n()) %>% # Contamos freqcuencia de cada grupo etario
   mutate(porcentaje = frecuencia / sum(frecuencia) * 100) # Utilizamos frecuencia para calcular la proporcion
 
-# Visualizaciones ---------------------------------------------------------
+# Visualizaciones Univariantes ---------------------------------------------------------
+
+## Veamos la distribucion de la edad de los sujetos
+# Que grafico utilizarias?
+
+study_1_subset_df %>% 
+  ggplot(aes(x = age)) + 
+  geom_histogram(bins = 50)
+
+## Exploremos los grupos etarios
+# Que grafico utilizarias?
+
+study_1_subset_df %>% 
+  ggplot(aes(x = age_group)) +
+  geom_bar(stat="count") +
+  scale_x_continuous("age_group", breaks = c(1:6))
+
+## Tu turno! 
+ # Exploremos las variables descriptivas restantes!
