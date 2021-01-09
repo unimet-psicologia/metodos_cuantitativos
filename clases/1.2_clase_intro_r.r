@@ -95,6 +95,84 @@ print(FALSE + FALSE)
 
 
 
+
+# Operadores Lógicos en R -------------------------------------------------
+
+## Operador de Igualdad ==
+
+1 == 1
+"hola" == "hola"
+'hola' == 'adios'
+1/2 == 1/2
+TRUE == TRUE
+TRUE == FALSE
+
+## Operador Distinto (Not equal to)
+
+1 != 1
+"hola" != "hola"
+'hola' != 'adios'
+1/2 != 1/2
+TRUE != TRUE
+TRUE != FALSE
+
+## Operador Mayor y mayor igual
+
+1 > 1
+"hola" > "hola"
+'hola' > 'adios'
+1/2 > 1/2
+TRUE > TRUE
+TRUE > FALSE
+
+1 >= 1
+"hola" >= "hola"
+'hola' >= 'adios'
+1/2 >= 1/2
+TRUE >= TRUE
+TRUE >= FALSE
+
+## Operador Mayor y mayor igual
+
+1 < 1
+"hola" < "hola"
+'hola' < 'adios'
+1/2 < 1/2
+TRUE < TRUE
+TRUE < FALSE
+
+1 <= 1
+"hola" <= "hola"
+'hola' <= 'adios'
+1/2 <= 1/2
+TRUE <= TRUE
+TRUE <= FALSE
+
+## Not (!)
+
+!TRUE == TRUE
+!FALSE == TRUE
+!(TRUE != TRUE)
+
+## Or (|)
+
+FALSE | TRUE
+FALSE | FALSE
+TRUE | TRUE
+
+(TRUE != TRUE) | (FALSE != FALSE)
+(TRUE != TRUE) | (FALSE == FALSE)
+
+## And (&)
+
+FALSE & TRUE
+FALSE & FALSE
+TRUE & TRUE
+
+(TRUE != TRUE) & (FALSE != FALSE)
+(TRUE != TRUE) & (FALSE == FALSE)
+
+
 # Vectores ----------------------------------------------------------------
 
 ## Descripcion ##
