@@ -13,6 +13,7 @@ library(stringr)
 library(ggplot2)
 library(tidyr)
 library(psych)
+library(GGally)
 
 # Sobre el dataset:
 # https://beta.ukdataservice.ac.uk/datacatalogue/studies/study?id=854297
@@ -167,7 +168,7 @@ study_1_subset_df %>%
 study_1_subset_df %>% summary()
 
 ## Tambien podemos utilizar describe del paquete psych
-describe(study_1_subset_df, mad = TRUE)
+describe(study_1_subset_df)
 
 # Hay un error en la funcion de arriba, cual crees que es?
 
@@ -190,10 +191,55 @@ study_1_subset_df %>%
 ## Exploremos los grupos etarios
 # Que grafico utilizarias?
 
-study_1_subset_df %>% 
-  ggplot(aes(x = age_group)) +
-  geom_bar(stat="count") +
+  ggplot(data=study_1_subset_df) +
+  geom_bar(aes(x = age_group), stat="count") +
   scale_x_continuous("age_group", breaks = c(1:6))
 
 ## Tu turno! 
  # Exploremos las variables descriptivas restantes!
+
+  
+
+# Exploración univariante de variable dependiente -------------------------
+
+## Veamos la distribución de la variable dependiente  
+ggplot(data=study_1_subset_df) +
+  geom_histogram(aes(x = total_sharing),bins = 40) +
+  scale_x_continuous("Likelihood Of Sharing (total_sharing)", # añadir todos lo numeros en X Axis.
+                     breaks = c(min(study_1_subset_df$total_sharing):max(study_1_subset_df$total_sharing)))
+  
+# Visualizaciones Bivariantes ---------------------------------------------
+
+  
+## Como las variables independientes varían junto a la variable dependiente?
+  
+ggplot(data = study_1_subset_df) +
+  geom_point(mapping = aes(x = openness, y = total_sharing)) +
+  ggtitle("Opennes and Total Sharing")
+
+ggplot(data = study_1_subset_df) +
+  geom_point(mapping = aes(x = conscientiousness, y = total_sharing)) +
+  ggtitle("Conscientiousness and Total Sharing")
+
+ggplot(data = study_1_subset_df) +
+  geom_point(mapping = aes(x = extraversion, y = total_sharing)) +
+  ggtitle("Extraversion and Total Sharing")
+
+ggplot(data = study_1_subset_df) +
+  geom_point(mapping = aes(x = agreeableness, y = total_sharing)) +
+  ggtitle("Agreeableness and Total Sharing")
+
+ggplot(data = study_1_subset_df) +
+  geom_point(mapping = aes(x = neuroticism, y = total_sharing)) +
+  ggtitle("Neuroticism and Total Sharing")
+
+ggplot(data = study_1_subset_df) +
+  geom_point(mapping = aes(x = conservatism, y = total_sharing)) +
+  ggtitle("Conservatism and Total Sharing")
+
+
+ggplot(data = study_1_subset_df) +
+  geom_point(mapping = aes(x = total_nmls, y = total_sharing)) +
+  ggtitle("New Media Literacy Scale and Total Sharing")
+
+
