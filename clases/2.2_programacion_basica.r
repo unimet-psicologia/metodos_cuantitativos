@@ -5,6 +5,7 @@
 #' ---
 
 
+library(readr)
 
 # Operadores Relacionales ------------------------------------------------------
 
@@ -203,20 +204,20 @@ while (numero <= 10) {
 ## Podemos iterar sobre un vector
 
 vector_numeros <- 1:5 # creemos un vector con numeros del 1 al 5
-                        # Equivalente a c(1,2,3,4,5,6)
+# Equivalente a c(1,2,3,4,5,6)
 
 # Podemos hacer print de cada numero.
-  # cada iteracion es dividida por "---------"
+# cada iteracion es dividida por "---------"
 for (numero in vector_numeros) {
-  print(paste("Iteracion: ",numero))
+  print(paste("Iteracion: ", numero))
   print("----------------")
 }
 
 ## De igual manera podemos iterar sobre un vector de characters
 
-vector_unimet <- c("u","n","i","m","e","t")
+vector_unimet <- c("u", "n", "i", "m", "e", "t")
 
-for (letra in vector_unimet){
+for (letra in vector_unimet) {
   print(letra)
   print("---------------")
 }
@@ -224,15 +225,82 @@ for (letra in vector_unimet){
 
 ## Por ultimo, es muy comun iterar sobre los indices de un vector o un arreglo.
 # Utilizamos 1:length(<VECTOR>)
-  # Tip: Utiliza ?length para chequear que hace esta funcion.
+# Tip: Utiliza ?length para chequear que hace esta funcion.
 
 for (indice_letra in 1:length(vector_unimet)) {
-  print(paste("Iteracion: ",indice_letra))
+  print(paste("Iteracion: ", indice_letra))
   print(vector_unimet[indice_letra])
   print("----------------")
 }
 
 
+# Funciones ---------------------------------------------------------------
+
+# Utilizamos funciones cuando repetimos logica o repetimos otras funciones multiples veces.
+
+# mi_primer_funcion <- function(<ARGUMENTOS>) {
+#   LOGICA
+# }
+
+
+## Ejemplo:
+
+# Sintaxis basica.
+
+# Argumento sin valor default
+
+imprimir_nombre_sindefault <- function(nombre) {
+  print(nombre)
+}
+
+
+imprimir_nombre_sindefault("Eugenio Mendoza")
+
+
+# Argumento con valor default
+
+imprimir_nombre_condefault <- function(nombre = "Nombre Default") {
+  print(nombre)
+}
+
+imprimir_nombre_condefault()
 
 
 
+# Ejercicio ---------------------------------------------------------------
+
+## Leamos un dataframe
+
+data_practica_anova <- read_csv("datasets/data_practica_anova.csv")
+
+
+## Queremos saber cual es la media y desviacion estandar segun el tipo de personalidad
+
+# 1er paso: Encontrar cuales son los datos que son de Tipo A
+boolean_mask <- (data_practica_anova$personalidad == "Tipo A")
+boolean_mask # Veamos que tiene Boolean Mask.
+
+# 2do paso: Utilizar la variable boolean_mask para encontrar los valores que son TRUE
+# Importante: Se deben pasar estos valores como filas! (primera parte del corchete)
+# esto se debe a que queremos encontrar
+data_practica_anova[boolean_mask, ]
+
+# 3er paso: Imprimir Media y desviacion estandar segun Tipo
+# Importante: Al copiar y pegar codigo es muy facil cometer errores!!
+print("Media Rendimento en actividad Tipo A")
+mean(data_practica_anova$personalidad == "Tipo A")
+print("Desviacion Estandar Rendimento en actividad Tipo A")
+sd(data_practica_anova$personalidad == "Tipo A")
+
+
+print("Media y mediana Rendimento en actividad Tipo B")
+mean(data_practica_anova$personalidad == "Tipo B")
+print("Desviacion Estandar en actividad Tipo B")
+sd(data_practica_anova$personalidad == "Tipo B")
+
+# 4to paso: Crear funcion
+# Como crearias una funcion para reutilizar el codigo del 3er paso
+
+imprimir_media_desviacion <- function() {
+  # ESCRIBIR CODIGO ACA
+}
