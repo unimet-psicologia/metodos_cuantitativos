@@ -61,7 +61,7 @@ study_1_subset_df <- study_1_original_df %>%
 # Total de valores nulos en el dataframe
 study_1_subset_df %>%
   is.na() %>%
-  sum() 
+  sum()
 
 study_1_subset_df <- study_1_subset_df %>%
   na.omit()
@@ -71,27 +71,28 @@ study_1_subset_df <- study_1_subset_df %>%
 ## Veamos la distribucion de la edad de los sujetos
 # Que grafico utilizarias?
 
-study_1_subset_df %>% 
-  ggplot(aes(x = age)) + 
+study_1_subset_df %>%
+  ggplot(aes(x = age)) +
   geom_histogram(bins = 50)
 
 ## Exploremos los grupos etarios
 # Que grafico utilizarias?
 
-ggplot(data=study_1_subset_df) +
-  geom_bar(aes(x = age_group), stat="count") +
+ggplot(data = study_1_subset_df) +
+  geom_bar(aes(x = age_group), stat = "count") +
   scale_x_continuous("age_group", breaks = c(1:6))
 
-## Tu turno! 
+## Tu turno!
 # Exploremos las variables descriptivas restantes!
 
 
 
-## Veamos la distribucion de la variable dependiente  
-ggplot(data=study_1_subset_df) +
-  geom_histogram(aes(x = total_sharing),bins = 40) +
+## Veamos la distribucion de la variable dependiente
+ggplot(data = study_1_subset_df) +
+  geom_histogram(aes(x = total_sharing), bins = 40) +
   scale_x_continuous("Likelihood Of Sharing (total_sharing)", # aÃ±adir todos lo numeros en X Axis.
-                     breaks = c(min(study_1_subset_df$total_sharing):max(study_1_subset_df$total_sharing)))
+    breaks = c(min(study_1_subset_df$total_sharing):max(study_1_subset_df$total_sharing))
+  )
 
 # EDA Bivariante ----------------------------------------------------------
 
@@ -131,11 +132,11 @@ ggplot(data = study_1_subset_df) +
 
 # Feature engineering -----------------------------------------------------
 
-# Ahora tu turno! 
-  # Es necesario convertir politics a factor
+# Ahora tu turno!
+# Es necesario convertir politics a factor
 
 # Creamos dummies con dummy_cols
-study_1_subset_df <- study_1_subset_df %>% 
+study_1_subset_df <- study_1_subset_df %>%
   dummy_cols("politics")
 
 View(study_1_subset_df)
@@ -143,15 +144,15 @@ View(study_1_subset_df)
 # EDA Supuestos Regresion Lineal Simple --------------------------------------------------------
 
 # Primero calculamos el modelo
-  # Recuerda: VD ~ VI
+# Recuerda: VD ~ VI
 model_age <- lm(total_sharing ~ age, data = study_1_subset_df)
 
 # Linealidad de la data
-  # Idealmente no debe haberun patron.L linea roja debe ser lo mas horizontal posible.
+# Idealmente no debe haberun patron.L linea roja debe ser lo mas horizontal posible.
 plot(model_age, 1)
 
 # Homogeneidad de la varianza
-  # Los residuos debe ser homocedantes (distribuidos de una manera equitativa)
+# Los residuos debe ser homocedantes (distribuidos de una manera equitativa)
 plot(model_age, 3)
 
 
@@ -160,10 +161,10 @@ plot(model_age, 2)
 
 
 # Obtenemos la informacion del modelo
-  # Estimate: Coeficiente beta estandarizado
-  # Pr>: P valor del coeficiente.
-  # p-value: P valor del modelo
-  # Adjusted R Squared: R cuadrado ajustado del modelo
+# Estimate: Coeficiente beta estandarizado
+# Pr>: P valor del coeficiente.
+# p-value: P valor del modelo
+# Adjusted R Squared: R cuadrado ajustado del modelo
 summary(model_age)
 
 
@@ -195,6 +196,13 @@ plot(model_age_bigfive, 3)
 plot(model_age_bigfive, 2)
 
 
+# Evaluamos si hay multicolinealidad
+car::vif(model_age_bigfive)
+
+# Ahora tu turno! Calcula la matriz de correlaciones para las variables independientes del modelo
+
+
+
 # Obtenemos la informacion del modelo
 # Estimate: Coeficiente beta estandarizado
 # Pr>: P valor del coeficiente.
@@ -202,6 +210,26 @@ plot(model_age_bigfive, 2)
 # Adjusted R Squared: R cuadrado ajustado del modelo
 summary(model_age_bigfive)
 
+
+# También podemos predecir nuevos valores!
+
+# Imaginemos que recibimos la siguiente data nueva:
+
+dataframe_nuevo <- data.frame(
+  age = c(22),
+  openness = c(13),
+  conscientiousness = c(34),
+  extraversion = c(27),
+  agreeableness = c(26),
+  neuroticism = c(17),
+  conservatism = c(653),
+  total_nmls = c(56)
+)
+
+# Podemos predecir nuevos valores de la siguiente manera:
+# El primer argumento es el modelo
+# El segundo argumento la data nueva que hemos recibido
+predict(model_age_bigfive, newdata = dataframe_nuevo)
 
 # Ahora tu turno! Que otras variables agregarias a nuestro modelo? --------
 
