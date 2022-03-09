@@ -116,7 +116,12 @@ poblacion_df_20_59_join
 
 
 # Edad
-poblacion_df_20_59_edad %>% select(grupos_etarios, percent_of_total)
+poblacion_df_20_59_edad %>%
+  write.csv2(.,
+             "cuota_edad.csv",
+             row.names = FALSE,
+             fileEncoding = "UTF-8")
 
 # Municipio
-poblacion_df_20_59_groupby_municipio %>% select(Municipio, percent_of_total)
+poblacion_df_20_59_groupby_municipio %>% select(Municipio, total, percent_of_total) %>%
+  write.csv2(., "couta_municipo.csv", row.names = FALSE)
